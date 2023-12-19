@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:folio_app_backend/src/features/auth/auth_page.dart';
-import 'package:folio_app_backend/src/features/home/home_page.dart';
+import 'package:folio_app_backend/src/features/companies/companies.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashPage extends StatefulWidget {
@@ -25,10 +25,16 @@ class _SplashPageState extends State<SplashPage> {
     if (context.mounted) {
       if (user == null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const AuthPage()));
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AuthPage(),
+            ));
       } else {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const HomePage()));
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CompaniesPage(),
+            ));
       }
     }
   }
