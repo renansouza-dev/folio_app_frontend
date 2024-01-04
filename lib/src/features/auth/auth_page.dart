@@ -1,5 +1,5 @@
+import 'package:companies/companies.dart';
 import 'package:flutter/material.dart';
-import 'package:folio_app_backend/src/features/home/home_page.dart';
 
 import 'auth_controller.dart';
 
@@ -27,7 +27,11 @@ class _AuthPageState extends State<AuthPage> {
             const SnackBar(content: Text('Erro na autenticação')));
       } else if (controller.state == AuthState.success) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const HomePage()));
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CompaniesPage(),
+          ),
+        );
       }
     });
   }
