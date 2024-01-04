@@ -1,4 +1,4 @@
-import 'package:companies_api/company_api.dart';
+import 'package:companies_api/companies_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -9,8 +9,8 @@ void main() {
           CompanyEntity.fromJson(
             const <String, dynamic>{
               "id": "91b03daa-cbe2-4d55-8808-341e87ab4d37",
-              "name": "BANCO C6 S.A.",
-              "cnpj": "31872495000172",
+              "name": "BANCO S.A.",
+              "cnpj": "00000000000000",
               "broker": true,
               "listed": false
             },
@@ -18,8 +18,8 @@ void main() {
           isA<CompanyEntity>()
               .having((company) => company.id, 'id',
                   '91b03daa-cbe2-4d55-8808-341e87ab4d37')
-              .having((company) => company.name, 'name', 'BANCO C6 S.A.')
-              .having((company) => company.cnpj, 'cnpj', '31872495000172')
+              .having((company) => company.name, 'name', 'BANCO S.A.')
+              .having((company) => company.cnpj, 'cnpj', '00000000000000')
               .having((company) => company.broker, 'broker', true)
               .having((company) => company.listed, 'listed', false),
         );
@@ -38,8 +38,8 @@ void main() {
                   listed: false)
               .toMap(),
           isA<Map<String, dynamic>>()
-              .having((json) => json['name'], 'name', 'BANCO C6 S.A.')
-              .having((json) => json['cnpj'], 'cnpj', '31872495000172')
+              .having((json) => json['name'], 'name', 'BANCO S.A.')
+              .having((json) => json['cnpj'], 'cnpj', '00000000000000')
               .having((json) => json['broker'], 'broker', true)
               .having((json) => json['listed'], 'listed', false),
         );

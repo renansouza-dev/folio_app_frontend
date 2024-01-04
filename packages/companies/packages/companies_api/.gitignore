@@ -9,7 +9,9 @@
 .history
 .svn/
 migrate_working_dir/
-genhtml.perl
+pubspec_overrides.yaml
+pubspec.lock
+**/packages/**/pubspec.lock
 
 # IntelliJ related
 *.iml
@@ -20,7 +22,7 @@ genhtml.perl
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
-#.vscode/
+.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -42,7 +44,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-# Custom files
-/coverage/
-genhtml.perl

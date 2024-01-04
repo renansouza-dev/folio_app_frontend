@@ -1,4 +1,4 @@
-import 'package:companies_api/company_api.dart';
+import 'package:companies_api/companies_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
@@ -12,7 +12,7 @@ class FakeUri extends Fake implements Uri {}
 void main() {
   group('CompanyApiClient', () {
     late http.Client httpClient;
-    late CompanyApiClient apiClient;
+    late CompaniesApiClient apiClient;
 
     setUpAll(() {
       registerFallbackValue(FakeUri());
@@ -20,12 +20,12 @@ void main() {
 
     setUp(() {
       httpClient = MockHttpClient();
-      apiClient = CompanyApiClient(httpClient: httpClient);
+      apiClient = CompaniesApiClient(httpClient: httpClient);
     });
 
     group('constructor', () {
       test('does not require an httpClient', () {
-        expect(CompanyApiClient(), isNotNull);
+        expect(CompaniesApiClient(), isNotNull);
       });
     });
 
@@ -38,8 +38,8 @@ void main() {
             "content": [
               {
                 "id": "91b03daa-cbe2-4d55-8808-341e87ab4d37",
-                "name": "BANCO C6 S.A.",
-                "cnpj": "31872495000172",
+                "name": "BANCO S.A.",
+                "cnpj": "00000000000000",
                 "broker": true,
                 "listed": false
               }
@@ -76,7 +76,7 @@ void main() {
           } catch (_) {}
           verify(
             () => httpClient.get(
-              Uri.https(
+              Uri.http(
                 '192.168.1.95:8080',
                 'v1/companies',
                 {'pageSize': 20.toString()},
@@ -92,8 +92,8 @@ void main() {
             "content": [
               {
                 "id": "91b03daa-cbe2-4d55-8808-341e87ab4d37",
-                "name": "BANCO C6 S.A.",
-                "cnpj": "31872495000172",
+                "name": "BANCO S.A.",
+                "cnpj": "00000000000000",
                 "broker": true,
                 "listed": false
               }
@@ -126,14 +126,14 @@ void main() {
           }''');
           when(() => httpClient.get(any())).thenAnswer((_) async => response);
           try {
-            await apiClient.getCompanies(null, '31872495000172');
+            await apiClient.getCompanies(null, '00000000000000');
           } catch (_) {}
           verify(
             () => httpClient.get(
-              Uri.https(
+              Uri.http(
                 '192.168.1.95:8080',
                 'v1/companies',
-                {'pageSize': 20.toString(), 'cnpj': '31872495000172'},
+                {'pageSize': 20.toString(), 'cnpj': '00000000000000'},
               ),
             ),
           ).called(1);
@@ -146,8 +146,8 @@ void main() {
             "content": [
               {
                 "id": "91b03daa-cbe2-4d55-8808-341e87ab4d37",
-                "name": "BANCO C6 S.A.",
-                "cnpj": "31872495000172",
+                "name": "BANCO S.A.",
+                "cnpj": "00000000000000",
                 "broker": true,
                 "listed": false
               }
@@ -185,7 +185,7 @@ void main() {
           } catch (_) {}
           verify(
             () => httpClient.get(
-              Uri.https(
+              Uri.http(
                 '192.168.1.95:8080',
                 'v1/companies',
                 {
@@ -221,8 +221,8 @@ void main() {
 
       group('post requests', () {
         const dto = CompanyDto(
-          name: 'BANCO C6 S.A.',
-          cnpj: '31872495000172',
+          name: 'BANCO S.A.',
+          cnpj: '00000000000000',
           listed: false,
           broker: true,
         );
@@ -235,7 +235,7 @@ void main() {
           } catch (_) {}
           verify(
             () => httpClient.post(
-                Uri.https(
+                Uri.http(
                   '192.168.1.95:8080',
                   'v1/companies',
                 ),
@@ -257,7 +257,7 @@ void main() {
           } catch (_) {}
           verify(
             () => httpClient.delete(
-              Uri.https('192.168.1.95:8080', 'v1/companies/$id'),
+              Uri.http('192.168.1.95:8080', 'v1/companies/$id'),
             ),
           ).called(1);
         });
@@ -298,8 +298,8 @@ void main() {
       group('updateCompanies', () {
         const entity = CompanyEntity(
           id: '082190eb-1ba8-40d6-9c40-9c3b8366961e',
-          name: 'BANCO C6 S.A.',
-          cnpj: '31872495000172',
+          name: 'BANCO S.A.',
+          cnpj: '00000000000000',
           listed: false,
           broker: true,
         );
@@ -313,7 +313,7 @@ void main() {
           } catch (_) {}
           verify(
             () => httpClient.patch(
-              Uri.https('192.168.1.95:8080', 'v1/companies/${entity.id}'),
+              Uri.http('192.168.1.95:8080', 'v1/companies/${entity.id}'),
               body: CompanyDto.fromJson(entity.toMap()).toMap(),
             ),
           ).called(1);
