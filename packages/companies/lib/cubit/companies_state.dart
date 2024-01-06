@@ -2,13 +2,6 @@ part of 'companies_cubit.dart';
 
 enum CompaniesStatus { initial, loading, success, failure }
 
-extension CompaniesStatusX on CompaniesStatus {
-  bool get isInitial => this == CompaniesStatus.initial;
-  bool get isLoading => this == CompaniesStatus.loading;
-  bool get isSuccess => this == CompaniesStatus.success;
-  bool get isFailure => this == CompaniesStatus.failure;
-}
-
 final class CompaniesState extends Equatable {
   final CompaniesStatus status;
   final List<CompanyEntity> companies;

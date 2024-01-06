@@ -5,14 +5,6 @@ class CompaniesLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final theme = Theme.of(context);
-    return const Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text('⛅', style: TextStyle(fontSize: 64)),
-        Text('Loading Companies' /*, style: theme.textTheme.headlineSmall*/),
-        Padding(padding: EdgeInsets.all(16), child: CircularProgressIndicator())
-      ],
-    );
+    return const CircularProgressIndicator();
   }
 }

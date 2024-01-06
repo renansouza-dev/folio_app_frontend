@@ -6,15 +6,14 @@ class CompaniesEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Text('🏙️', style: TextStyle(fontSize: 64)),
-        Text(
-          'Please Select a City!',
-          style: theme.textTheme.headlineSmall,
-        ),
-      ],
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.warning_outlined, color: Colors.amber, size: 100),
+          Text('No records found!', style: theme.textTheme.headlineSmall),
+        ],
+      ),
     );
   }
 }

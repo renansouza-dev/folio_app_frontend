@@ -9,11 +9,8 @@ class CompaniesError extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Text('🙈', style: TextStyle(fontSize: 64)),
-        Text(
-          'Something went wrong!',
-          style: theme.textTheme.headlineSmall,
-        ),
+        const Icon(Icons.error_outline_outlined, color: Colors.red, size: 100),
+        Text('Something went wrong!', style: theme.textTheme.headlineSmall),
       ],
     );
   }
